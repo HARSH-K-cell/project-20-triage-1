@@ -44,6 +44,23 @@ article{animation:cardIn .45s both}
 .ai-scan:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent,rgba(34,211,238,.12),transparent);background-size:100% 120px;animation:scan 1.7s linear infinite}
 @media(max-width:640px){.floating-mascot{right:10px;bottom:10px;transform:scale(.88);transform-origin:bottom right}.hero-mascot{width:72px;height:72px}}
 
+
+/* Premium animated sign-in / registration screen */
+#authModal{background:rgba(2,6,18,.88);backdrop-filter:blur(14px);animation:authFade .25s ease}
+#authModal>div{max-width:460px!important;padding:30px!important;border-radius:26px!important;border:1px solid rgba(103,232,249,.28)!important;background:radial-gradient(ellipse at 50% 0%,rgba(34,211,238,.16),transparent 48%),rgba(8,15,31,.98)!important;box-shadow:0 28px 90px rgba(0,0,0,.62),0 0 50px rgba(34,211,238,.12)!important;animation:authRise .35s cubic-bezier(.2,.8,.2,1)}
+#authModal>div:before{content:"⚡🐹";display:grid;place-items:center;margin:0 auto 18px;width:76px;height:76px;border-radius:24px;background:linear-gradient(145deg,#fde047,#f59e0b);font-size:32px;box-shadow:0 0 0 8px rgba(250,204,21,.08),0 12px 35px rgba(250,204,21,.22);animation:floaty 3s ease-in-out infinite}
+#authTitle{font-size:26px;letter-spacing:-.03em}
+#authModal input{border-radius:12px!important;padding:13px!important;transition:border-color .2s,box-shadow .2s}
+#authModal input:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,.12)}
+#authSubmit{border-radius:12px!important;padding:14px!important;background:linear-gradient(100deg,#67e8f9,#60a5fa)!important;box-shadow:0 8px 24px rgba(34,211,238,.18)}
+#authSubmit:hover{box-shadow:0 10px 30px rgba(34,211,238,.32)}
+#authModal>div>div:first-child{align-items:center}
+#authModal>div>div:first-child:after{content:"LOGIC LABS  ·  CAMPUS AI";display:block;position:absolute;left:0;right:0;top:110px;text-align:center;color:#67e8f9;font-size:9px;font-weight:800;letter-spacing:.22em;pointer-events:none}
+#authModal form{margin-top:6px}
+@keyframes authFade{from{opacity:0}to{opacity:1}}
+@keyframes authRise{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:520px){#authModal>div{padding:24px!important}#authModal>div:before{width:64px;height:64px;font-size:27px}}
+
 </style>
 </head>
 <body class="min-h-screen">
