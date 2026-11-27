@@ -9,6 +9,41 @@
 body{background:#080c14;color:#e2e8f0;font-family:Inter,system-ui,sans-serif}
 .panel{background:rgba(15,23,42,.82);border:1px solid rgba(148,163,184,.16);backdrop-filter:blur(12px)}
 input,textarea,select{color-scheme:dark}
+
+/* LOGIC LABS visual upgrade */
+:root{color-scheme:dark}
+body{background:radial-gradient(ellipse at 15% 0%,rgba(14,165,233,.16),transparent 34%),radial-gradient(ellipse at 90% 15%,rgba(168,85,247,.13),transparent 30%),#070b14!important;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.22;background-image:linear-gradient(rgba(148,163,184,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.08) 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 85%)}
+.panel{box-shadow:0 18px 55px rgba(0,0,0,.22);transition:border-color .25s,transform .25s}
+.panel:hover{border-color:rgba(34,211,238,.34)}
+button{transition:transform .2s,box-shadow .2s,filter .2s}
+button:hover{transform:translateY(-2px);filter:brightness(1.08);box-shadow:0 8px 25px rgba(34,211,238,.15)}
+button:active{transform:scale(.98)}
+article{animation:cardIn .45s both}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-12px) rotate(3deg)}}
+@keyframes earWiggle{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(-18deg)}}
+@keyframes cheekGlow{0%,100%{box-shadow:0 0 8px #fb7185}50%{box-shadow:0 0 20px #fb7185,0 0 30px rgba(251,113,133,.45)}}
+@keyframes bolt{0%,100%{opacity:.45;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes pulseRing{0%{transform:scale(.75);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+@keyframes scan{0%{background-position:0 -120px}100%{background-position:0 120px}}
+.hero-mascot{position:relative;display:inline-flex;align-items:center;justify-content:center;width:88px;height:88px;border-radius:28px;background:linear-gradient(145deg,#fde047,#f59e0b);box-shadow:0 12px 35px rgba(250,204,21,.28);animation:floaty 3.4s ease-in-out infinite;border:3px solid rgba(255,255,255,.65)}
+.hero-mascot:before,.hero-mascot:after{content:"";position:absolute;top:-19px;width:17px;height:37px;background:linear-gradient(#171717 0 28%,#facc15 29%);border-radius:90% 90% 20% 20%;z-index:-1}
+.hero-mascot:before{left:13px;transform:rotate(-17deg);animation:earWiggle 2.7s infinite}
+.hero-mascot:after{right:13px;transform:rotate(17deg);animation:earWiggle 2.7s infinite reverse}
+.mascot-face{font-size:34px;filter:drop-shadow(0 2px 1px rgba(0,0,0,.2))}
+.mascot-cheek{position:absolute;width:13px;height:13px;border-radius:50%;background:#fb7185;top:48px;animation:cheekGlow 1.8s infinite}
+.mascot-cheek.left{left:12px}.mascot-cheek.right{right:12px}
+.mascot-bolt{position:absolute;color:#fff7ae;font-size:19px;animation:bolt 1.2s infinite}
+.mascot-bolt.one{right:-12px;top:5px}.mascot-bolt.two{left:-12px;bottom:5px;animation-delay:.5s}
+.floating-mascot{position:fixed;right:22px;bottom:22px;z-index:30;display:flex;align-items:center;gap:10px;padding:9px 13px 9px 9px;border-radius:22px;background:rgba(15,23,42,.94);border:1px solid rgba(250,204,21,.4);box-shadow:0 12px 35px rgba(0,0,0,.4);backdrop-filter:blur(14px);animation:floaty 4s ease-in-out infinite}
+.floating-mascot .mini{width:42px;height:42px;border-radius:14px;background:#facc15;display:grid;place-items:center;font-size:22px}
+.floating-mascot small{display:block;color:#facc15;font-weight:800;letter-spacing:.12em;font-size:9px}
+.floating-mascot b{font-size:12px;color:#e2e8f0}
+.ai-scan{position:relative;overflow:hidden}
+.ai-scan:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent,rgba(34,211,238,.12),transparent);background-size:100% 120px;animation:scan 1.7s linear infinite}
+@media(max-width:640px){.floating-mascot{right:10px;bottom:10px;transform:scale(.88);transform-origin:bottom right}.hero-mascot{width:72px;height:72px}}
+
 </style>
 </head>
 <body class="min-h-screen">
@@ -54,4 +89,10 @@ async function updateTicket(id){try{await api('/api/admin/tickets/'+id,{method:'
 async function restore(){if(!token)return;try{const me=await api('/api/auth/me');role=me.role;username=me.username;showDashboard()}catch(e){localStorage.removeItem('p20token');token=null}}
 restore();
 </script>
+
+<div class="floating-mascot" aria-label="Pika campus helper">
+ <div class="mini">⚡🐹</div>
+ <div><small>PIKA CAMPUS HELPER</small><b>Need a hand? Let's fix it!</b></div>
+</div>
+
 </body></html>
